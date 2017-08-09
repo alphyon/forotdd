@@ -39,4 +39,14 @@ class CreatePostsTest extends FeatureTestCase
 
 
     }
+
+    function test_create_post_form_validation()
+    {
+        $this->actingAs($user=$this->defaultUser())
+             ->visit(route('posts.create'))
+             ->press('Publicar')
+             ->seePageIs(route('posts.create'))
+            ->seeInElement('#field_title .help-block','The title field is required')
+            ->seeInElement('#field_content .help-block','The content field is required');
+    }
 }
