@@ -28,4 +28,15 @@ class CreatePostsTest extends FeatureTestCase
         //result
         $this->see($title);
     }
+
+    function test_creating_a_post_requires_authenticating()
+    {
+
+
+        //when
+        $this->visit(route('posts.create'))
+             ->seePageIs(route('login'));
+
+
+    }
 }
