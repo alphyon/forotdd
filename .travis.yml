@@ -18,4 +18,4 @@ script:
   - cp .env.travis .env
   - composer install --prefer-dist --no-interaction
   - php artisan migrate --seed #setups the migrations and seeding
-  - phpunit "vendor/$PACKAGE_NAME" #runs the phpunit just for your package.
+  - vendor/bin/phpunit #runs the phpunit just for your package.
