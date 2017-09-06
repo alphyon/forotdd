@@ -3,10 +3,7 @@ language: php
 sudo: true
 
 php:
-  - 5.5
-  - 5.6
-  - 7.0
-  - hhvm
+  -7.1
 
 sudo: false
 
@@ -14,7 +11,7 @@ matrix:
   fast_finish: true
 
   allow_failures:
-    - php: hhvm
+    - php: 7.1
 
 cache:
   directories:
@@ -24,7 +21,7 @@ services: mysql
 
 install:
   # create a new database for the hyn connection
-  - export DB_USERNAME=travis DB_DATABASE=foro_tests DB_PASSWORD=test123 QUEUE_DRIVER=sync
+  - export DB_USERNAME=travis DB_DATABASE=foro_tests DB_PASSWORD= QUEUE_DRIVER=sync
   #run the setup script
   - curl -s https://raw.githubusercontent.com/kevupton/docker-laravel-tests/master/setup.sh | bash
 
@@ -34,4 +31,4 @@ script:
   - composer update
   - php artisan vendor:publish --force
   - php artisan migrate --seed #setups the migrations and seeding
-  - phpunit "vendor/$PACKAGE_NAME" #runs the phpunit just for your package.
+  - phpunit "vendor/phpunit/bin" #runs the phpunit just for your package.
