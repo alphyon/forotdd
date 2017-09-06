@@ -5,7 +5,7 @@ Route::get('posts/create',[
     'as'=>'posts.create'
 ]);
 
-Route::post('posts/create',[
+Route::post('posts/store',[
     'uses'=>'CreatePostController@store',
     'as'=>'posts.store'
 ]);
